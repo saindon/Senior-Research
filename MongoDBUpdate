@@ -1,0 +1,24 @@
+import com.mongodb.client.MongoCollection;
+import staticcom.mongodb.client.model.Filters.*;
+import staticcom.mongodb.client.model.Updates.*;
+import org.bson.Document;
+import org.bson.types.ObjectId;
+
+try {
+    	MongoCollection collection = vars.getObject("collection");
+    	// Define the filter to identify the document to update (e.g., based on _id)
+	def filter = new Document("_id", new ObjectId("656d1f1604c1aeceb86f1737"))
+
+	// Define the update operation (e.g., using $set to update a field)
+	def update = new Document("\$set", new Document("author_name", "test"))
+
+	// Perform the update operation
+	def updateResult = collection.updateOne(filter, update)
+
+    }
+    catch(Exception e) {
+    	SampleResult.setSuccessful(false);
+    	SampleResult.setResponseCode("500");
+    	SampleResult.setResponseMessage("Exception: " + e);
+    }
+    
