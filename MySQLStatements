@@ -1,1 +1,3 @@
 select * from uber_reviews LIMIT 1;
+update uber_reviews set author_name = "test" where author_name = "A Google user" limit 1;
+delete from uber_reviews LIMIT 1;
