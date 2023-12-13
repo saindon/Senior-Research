@@ -1,0 +1,17 @@
+import com.mongodb.client.MongoCollection;
+import staticcom.mongodb.client.model.Filters.*;
+import org.bson.Document;
+
+try {
+    	MongoCollection collection = vars.getObject("collection");
+    	def filter = new Document("author_name", "A Google user");
+    	collection.deleteOne(filter);
+
+    	return "Document deleted";
+    }
+    catch(Exception e) {
+    	SampleResult.setSuccessful(false);
+    	SampleResult.setResponseCode("500");
+    	SampleResult.setResponseMessage("Exception: " + e);
+    }
+    
